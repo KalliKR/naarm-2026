@@ -76,9 +76,6 @@ a { color: inherit; }
 .btn-primary:hover { filter: brightness(1.08); }
 .btn-yellow { background: var(--yellow); color: var(--on-yellow); }
 .btn-yellow:hover { filter: brightness(1.06); }
-/* .btn-yellow[aria-current="page"] { box-shadow: 0 0 0 3px var(--bar), 0 0 0 5px var(--yellow); } */
-.btn-line { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn-line:hover { background: var(--ink); color: var(--bg); }
 .btn-lg { min-height: 52px; padding: .75rem 1.5rem; font-size: 1.125rem; }
 
 /* Type */
@@ -195,7 +192,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; a
 
 <footer>
   <div class="wrap">
-    <span>Stuck or lost? Use the Contact button at the top of any page.</span>
+    <!-- <span>Stuck or lost? Use the Contact button at the top of any page.</span> -->
     <button class="link-btn" id="resetBtn" type="button">Reset my progress</button>
   </div>
 </footer>
@@ -267,7 +264,7 @@ const CLUES = [
     imageAlt: ''
   },
   {
-    title: 'Your Royal Highness',
+    title: 'Her Royal Highness',
     password: 'HOSPITAL',
     text: 'Climb above a bustling city scene, to a place where trailblazing women have been. Once healing the city through doctors first and brave, now celebrating women’s voices and the legacy they gave. On Kulin Nation lands, follow the clue you’ve been sent, find Millarri Murnmut and continue your adventure’s ascent.',
     activity: `Pick an envelope and solve the anagram within (hint: it represents the contribution of women in Victoria). Using this word, come up with a motto that can be used at school and give this to the teacher for the next clue.`,
@@ -323,7 +320,7 @@ const CLUES = [
     password: '',
     text: 'Well done, you have almost made it! Watch the video for a clue to the final lcoation.',
     activity: '',
-    video: 'https://www.youtube-nocookie.com/embed/I2RXgHfqYx0?si=gil6wiokBuJLJivw&amp;controls=0',
+    video: 'https://www.youtube-nocookie.com/embed/I2RXgHfqYx0',
     image: '',
     imageAlt: ''
   },
@@ -425,7 +422,7 @@ function videoSection(c) {
   const id = c.video ? ytId(c.video) : '';
   if (!id) return '';
   return '<section class="card" aria-label="Video">' +
-    '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/I2RXgHfqYx0?si=gil6wiokBuJLJivw&amp;controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>' +
+    '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/' + id + '" title="' + esc(c.title) + ' video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>' +
     '<p><a class="video-link" href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Watch on YouTube</a></p></section>';
 }
 
@@ -469,8 +466,6 @@ function clueView(n) {
       '<p class="msg" id="msg" role="status" aria-live="polite"></p>' +
       '</form>';
   }
-  const prev = n > 1 ? '<a class="btn btn-line" href="#clue-' + (n - 1) + '">&larr; Clue ' + (n - 1) + '</a>' : '<span></span>';
-  const next = (n < TOTAL && n < unlocked) ? '<a class="btn btn-line" href="#clue-' + (n + 1) + '">' + nextShort + ' &rarr;</a>' : '<span></span>';
   const img = clueImage(c, n);
   return '<div class="stack">' +
     '<div class="clue-head"><div class="pennant" aria-hidden="true">' + n + '</div>' +
@@ -480,7 +475,6 @@ function clueView(n) {
     videoSection(c) +
     activitySection(c) +
     panel +
-    '<nav class="pager" aria-label="Clue navigation">' + prev + next + '</nav>' +
   '</div>';
 }
 
