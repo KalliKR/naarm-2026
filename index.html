@@ -534,8 +534,7 @@ function clueView(n) {
   if (!hasPw && n === unlocked) { unlocked = n + 1; saveProgress(); }
   const done = n < unlocked;
   const last = n === TOTAL;
-  const nextWord = n < TOTAL ? (CLUES[n].password ? 'Clue ' + (n + 1) : 'the final step') : '';
-  const nextShort = n < TOTAL ? (CLUES[n].password ? 'Clue ' + (n + 1) : 'Final step') : '';
+  const nextWord = n < TOTAL ? (CLUES[n].password ? 'Clue ' + (n + 1) : 'the final clue') : '';
   let panel = '';
   if (!hasPw) {
     panel = '';
