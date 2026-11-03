@@ -114,12 +114,6 @@ details .ans a { color: var(--red); font-weight: 600; }
 .s.lock { background: var(--line); color: var(--muted); }
 a.s:hover { filter: brightness(1.08); }
 .strip-wrap { display: flex; flex-direction: column; gap: 8px; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .85rem; color: var(--muted); }
-.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
-.legend .l-done::before { background: var(--green); }
-.legend .l-todo::before { background: var(--yellow); }
-/* .legend .l-sel::before { background: var(--surface); box-shadow: inset 0 0 0 2px var(--ink); } */
-.legend .l-lock::before { background: var(--line); }
 
 /* Clue page */
 .clue-head { display: flex; align-items: center; gap: 18px; }
@@ -136,7 +130,7 @@ a.s:hover { filter: brightness(1.08); }
 .clue-copy { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .clue-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 280px); gap: 24px; align-items: start; }
 .clue-img { margin: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: #E1E6EB; }
-.clue-img svg, .clue-img img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.clue-img svg, .clue-img img { display: block; width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; }
 @media (max-width: 640px) { .clue-body { grid-template-columns: minmax(0, 1fr); } .clue-img { max-width: 360px; } }
 .clue-body.solo { grid-template-columns: minmax(0, 1fr); }
 .video { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #000; max-width: 100%; }
@@ -192,7 +186,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; a
 
 <footer>
   <div class="wrap">
-    <!-- <span>Stuck or lost? Use the Contact button at the top of any page.</span> -->
     <button class="link-btn" id="resetBtn" type="button">Reset my progress</button>
   </div>
 </footer>
@@ -240,8 +233,8 @@ const CLUES = [
       - a slogan
       - a picture of the whole team with Larry
       - three reasons you should visit him.
-     
-     Bonus points: mention 'tram', 'coffee', 'laneway', or 'footy'.`,
+
+      Bonus points: mention 'tram', 'coffee', 'laneway', or 'footy'.`,
     image: 'https://www.lump.com.au/wp-content/uploads/2018/08/3-Christmas-Bow-Melb-Town-Hall-1-1600x1063.jpg',
     imageAlt: ''
   },
@@ -332,7 +325,7 @@ const CLUES = [
       A train awaits to whisk you away!`,
     activity: 
       `Somewhere along the laneway there is a little girl looking at a bug. Find the teacher once you figure out what type of insect it is for your next clue.
-    
+      
       Bonus points: Bower birds are known for collecting things in a certain colour-- today you become one! Make a digital collage of 5 things in that colour from Goldie Pl and Chancery Ln.`,
     image: 'https://streetartcities.com/media/6/68e3d24f-66a1-4b45-bb80-a3cb2e4814bd/orig.jpg',
     imageAlt: ''
@@ -349,7 +342,7 @@ const CLUES = [
 
       At the top of the stairs, the view draws you in,
       Standing tall, he gazes at you-- a giant of history.`,
-    activity: 
+      activity: 
       // In this task you will research, design, and pitch a new buidling to add to Melbourne's skyline.
       `You've discovered a building that tells a story without saying a word. But whose story is it telling, and what makes someone worthy of having their face on a building?
       
@@ -380,13 +373,13 @@ const CLUES = [
       When it is night, rhythms ignite: in the Vault your next clue is found.`,
     activity: 
       `Choose one Australian artist or band that is featured here and find:
-    - Their most famous song
-    - The decade they rose to fame
-    - One fun fact about them
+      - Their most famous song
+      - The decade they rose to fame
+      - One fun fact about them
 
       Now it's your turn in the spotlight! Record a 15-second video of your team performing or lip-syncing a short part of their song (keep it school-appropriate).
       
-    Tell your teacher about the aussie artist you researched and show them them video for your next clue. Rock on!!`,
+      Tell your teacher about the aussie artist you researched and show them them video for your next clue. Rock on!!`,
     image: 'https://beat.com.au/wp-content/uploads/2019/05/australianmusicvaultcredjasonlau.jpg',
     imageAlt: ''
   },
@@ -462,8 +455,7 @@ function strip(current) {
       ? '<li><a class="s ' + cls + '" href="#clue-' + n + '" aria-label="' + label + '"' + (n === current ? ' aria-current="page"' : '') + '>' + n + '</a></li>'
       : '<li><span class="s lock" aria-label="' + label + '">' + n + '</span></li>';
   }
-  return '<div class="strip-wrap"><ol class="strip" style="--n:' + TOTAL + '" aria-label="Race progress">' + items + '</ol>' +
-    '<div class="legend"><span class="l-done">Completed</span><span class="l-todo">Incomplete</span><span class="l-lock">Locked</span></div></div>';
+  return '<div class="strip-wrap"><ol class="strip" style="--n:' + TOTAL + '" aria-label="Race progress">' + items + '</ol></div>';
 }
 
 function homeView() {
