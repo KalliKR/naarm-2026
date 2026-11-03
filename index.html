@@ -581,34 +581,14 @@ function contactView() {
     '<p class="lead">Call the number below if there is an emergency, or your team is lost or has a problem with a clue.</p></section>' +
     '<section class="card" aria-labelledby="phoneHead"><h2 id="phoneHead">'+ esc(CONFIG.contactName) +'</h2>' +
       '<p class="num" id="phoneNum">' + esc(CONFIG.phone) + '</p>' +
-      '<div class="row"><button class="btn btn-primary" type="button" id="copyBtn">Copy number</button>' +
-      '<a class="btn btn-line" href="tel:' + esc(tel) + '">Call</a></div>' +
+      '<div class="row"><button class="btn btn-primary" type="button" onclick=location.href="tel:' + esc(tel) + '">Call</button>' +
+      '<a class="btn btn-line" id="copyBtn">Copy number</a></div>' +
       '<p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p></section>' +
-    '<section class="card" aria-labelledby="mapHead"><h2 id="mapHead">Location</h2>' +
+      '<section class="card" aria-labelledby="mapHead"><h2 id="mapHead">Naarm HQ Location</h2>' +
       '<p class="addr">' + esc(CONFIG.address) + '</p>' +
-      '<a class="map-link" href="' + esc(CONFIG.mapsUrl) + '" target="_blank" rel="noopener" aria-label="Open the location in Google Maps (opens in a new tab)">' + mapSvg() + '</a>' +
+      // '<a class="map-link" href="' + esc(CONFIG.mapsUrl) + '" target="_blank" rel="noopener" aria-label="Open the location in Google Maps (opens in a new tab)">' + '</a>' +
       '<div><a class="btn btn-primary" href="' + esc(CONFIG.mapsUrl) + '" target="_blank" rel="noopener">Open in Google Maps</a></div></section>' +
   '</div>';
-}
-
-function mapSvg() {
-  return '<svg viewBox="0 0 640 340" role="img" aria-label="Illustrated map with a pin at the race location" xmlns="http://www.w3.org/2000/svg">' +
-    '<rect width="640" height="340" fill="var(--map-land)"/>' +
-    '<path d="M-10 250 C 120 210, 200 300, 330 262 S 560 190, 650 232 L 650 290 C 560 250, 450 330, 330 312 S 110 262, -10 300 Z" fill="var(--map-water)"/>' +
-    '<rect x="40" y="36" width="150" height="96" rx="6" fill="var(--map-park)"/>' +
-    '<rect x="450" y="150" width="130" height="62" rx="6" fill="var(--map-park)"/>' +
-    '<g stroke="var(--map-road)" stroke-linecap="round" fill="none">' +
-      '<path d="M0 150 H640" stroke-width="14"/><path d="M0 60 H640" stroke-width="8"/><path d="M0 214 H400" stroke-width="8"/>' +
-      '<path d="M250 0 V340" stroke-width="14"/><path d="M410 0 V260" stroke-width="8"/><path d="M110 0 V210" stroke-width="8"/><path d="M540 0 V340" stroke-width="8"/>' +
-    '</g>' +
-    '<g transform="translate(250 150)">' +
-      '<ellipse cx="0" cy="2" rx="14" ry="5" fill="var(--ink)" opacity=".25"/>' +
-      '<path d="M0 0 C -22 -26 -22 -52 0 -56 C 22 -52 22 -26 0 0 Z" fill="var(--red)"/>' +
-      '<circle cx="0" cy="-36" r="8" fill="var(--on-red)"/>' +
-    '</g>' +
-    '<g transform="translate(274 96)"><rect width="104" height="30" rx="4" fill="var(--surface)" stroke="var(--line)"/>' +
-      '<text x="52" y="20" text-anchor="middle" font-family="Barlow, system-ui, sans-serif" font-size="15" font-weight="600" fill="var(--ink)">Race location</text></g>' +
-  '</svg>';
 }
 
 /* ---------- Router ---------- */
