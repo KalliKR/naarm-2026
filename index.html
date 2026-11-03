@@ -126,7 +126,7 @@ a.s:hover { filter: brightness(1.08); }
 .pennant.locked { background: var(--line); color: var(--muted); }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
 .clue-text, .activity-text { font-size: 1rem; line-height: 1.55; white-space: pre-line; text-align: center;}
-.activity-text { font-size: 0.95rem; text-align: start;}
+.activity-text { text-align: start;}
 .clue-copy { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .clue-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 280px); gap: 24px; align-items: center; }
 .clue-img { margin: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: #E1E6EB; }
@@ -273,7 +273,9 @@ const CLUES = [
     text: 
       `Some say three 8s are lucky, it’s true,
       Workers live by this motto too:
-      8 hours work, 8 hours play, 8 hours rest,
+
+      8 hours work, 8 hours play, 8 hours rest
+
       Seek this monument to continue your quest.`,
     activity: 
       `Recreate the motto of the monument with your team. Remember, pics or it didn't happen!`,
